@@ -1,0 +1,8 @@
+ul{
+    list-style-type: none;
+}
+.Wrapper,.Weather {
+    text-align: center;
+    background-color: #7c92bd;
+  }
+ 
