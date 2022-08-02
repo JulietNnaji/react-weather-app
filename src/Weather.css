@@ -25,7 +25,7 @@ ul{
  .temperature{
     position: relative;
     bottom: 20px;
-    right: 13px;
+    right: 10px;
     font-size: 15px;
  }
  .description{
@@ -37,3 +37,4 @@ ul{
  .lists{
   text-align: center;
  }
+ 
