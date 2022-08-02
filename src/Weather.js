@@ -3,19 +3,20 @@ import './Weather.css';
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 import { Audio } from  'react-loader-spinner';
+import Date from "./Date";
 
 export default function Weather (){
   let [loaded, setLoader] = useState (false);
   let [values, setValues] =useState(null);
   function showTemperature(response){
-    console.log(response.data);
+  
 setValues({
  temperature: response.data.main.temp,
  humidity: response.data.main.humidity,
  city: response.data.name,
  wind: response.data.wind.speed,
  pressure: response.data.main.pressure,
- date: " Tues, 2 Aug; 13:19",
+ date: new Date (response.data.dt * 1000),
  description: response.data.weather[0].description,
  weatherIcon: `http://openweathermap.org/img/wn/${
   response.data.weather[0].icon
@@ -54,7 +55,7 @@ if (loaded){
           </div>
           <ul className="lists mt-3">
             <li>
-             Last updated: {values.date}
+          Last updated: <Date date={values.date} />
             </li>
             <li>
            Wind: {Math.round(values.wind)}km/h
