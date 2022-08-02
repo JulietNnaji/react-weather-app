@@ -4,5 +4,36 @@ ul{
 .Wrapper,.Weather {
     text-align: center;
     background-color: #7c92bd;
+    max-width: 600px;
+    margin: 20px auto;
   }
- 
+  .image{
+    width: 120px;
+  }
+ .formName{
+    padding-top: 10px;
+ }
+
+ .degree{
+    font-size: 40px;
+    font-weight: bold;
+ }
+ .position{
+    position: relative;
+    left: 70px;
+ }
+ .temperature{
+    position: relative;
+    bottom: 20px;
+    right: 13px;
+    font-size: 15px;
+ }
+ .description{
+    position: relative;
+    right: 20px;
+    top: 5px;
+ }
+
+ .lists{
+  text-align: center;
+ }
