@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Date(props){
+export default function CurrentDate(props){
     let days = [
         "Sun",
         "Mon",
@@ -42,8 +42,8 @@ export default function Date(props){
     minutes = `0${minutes}`;
   }
 
-  return (<div>
-    {day}, {current} {month}; {hours}:{minutes};
-</div>);
+  return (<span>
+    {day}, {current} {month}; {hours}:{minutes}
+</span>);
   }  
 

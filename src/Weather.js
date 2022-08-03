@@ -3,7 +3,7 @@ import './Weather.css';
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 import { Audio } from  'react-loader-spinner';
-import Date from "./Date";
+import CurrentDate from "./CurrentDate";
 
 export default function Weather (){
   let [loaded, setLoader] = useState (false);
@@ -42,7 +42,7 @@ if (loaded){
           </div>
           </form>
           
-            <h1 className ="mt-3 text-capitalize">{values.city}</h1>
+            <h1 className ="mt-3 mb-0 text-capitalize">{values.city}</h1>
          
           </div>
           <img src= {values.weatherIcon} className="image" alt={values.description} />
@@ -55,7 +55,7 @@ if (loaded){
           </div>
           <ul className="lists mt-3">
             <li>
-          Last updated: <Date date={values.date} />
+          Last updated: <CurrentDate date={values.date} />
             </li>
             <li>
            Wind: {Math.round(values.wind)}km/h
@@ -79,7 +79,7 @@ if (loaded){
     
 }else{
     let apiKey = "0bef54fbf2f25ff0f6335be419abd9a2";
-    let city = "new york";
+    let city = "Lagos";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(showTemperature);
   
