@@ -5,9 +5,10 @@ import axios from "axios";
 import { Audio } from  'react-loader-spinner';
 import CurrentDate from "./CurrentDate";
 
-export default function Weather (){
+export default function Weather (props){
   let [loaded, setLoader] = useState (false);
   let [values, setValues] =useState(null);
+  let [city, setCityName] = useState (props.cityName);
   function showTemperature(response){
   
 setValues({
@@ -23,13 +24,29 @@ setValues({
 }@2x.png`
 });
 setLoader (true);
-  } 
+  }
   
+function search (){
+  let apiKey = "0bef54fbf2f25ff0f6335be419abd9a2";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemperature);
+}
+
+  function submitForm (event){
+    event.preventDefault ();
+    search ();
+  }
+  
+function changeCityName (event){
+setCityName (event.target.value);
+}
+
 if (loaded){
   return (
         <div className="Weather">
         <div className ="Wrapper">
-                <div className ="formName"><form>
+                <div className ="formName">
+                  <form onSubmit={submitForm}>
           <div className ="row">
             <div className = "col-6">
            <input type ="search" placeholder="Search for a city..." className ="ms-4"/>
@@ -37,7 +54,8 @@ if (loaded){
         
             <div className ="col-6">
                 <input type ="submit"
-                value ="Search" className ="btn btn-primary w-50" />
+                value ="Search" className ="btn btn-primary w-50" 
+                onChange={changeCityName}/>
             </div>
           </div>
           </form>
@@ -78,11 +96,7 @@ if (loaded){
       );
     
 }else{
-    let apiKey = "0bef54fbf2f25ff0f6335be419abd9a2";
-    let city = "Lagos";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(showTemperature);
-  
+  search();
     return (<p> 
     <Audio
         height = "80"
