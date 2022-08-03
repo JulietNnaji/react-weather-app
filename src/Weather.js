@@ -8,7 +8,8 @@ import CurrentDate from "./CurrentDate";
 export default function Weather (props){
   let [loaded, setLoader] = useState (false);
   let [values, setValues] =useState(null);
-  let [city, setCityName] = useState (props.cityName);
+  let [citySearch, setCityName] = useState (props.cityName);
+  
   function showTemperature(response){
   
 setValues({
@@ -28,7 +29,7 @@ setLoader (true);
   
 function search (){
   let apiKey = "0bef54fbf2f25ff0f6335be419abd9a2";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${citySearch}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
 }
 
