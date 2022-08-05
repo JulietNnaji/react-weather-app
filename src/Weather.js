@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 import { Audio } from  'react-loader-spinner';
 import CurrentDate from "./CurrentDate";
+import TemperatureUnits from "./TemperatureUnits";
 
 export default function Weather (props){
   let [loaded, setLoader] = useState (false);
@@ -50,13 +51,14 @@ if (loaded){
                   <form onSubmit={submitForm}>
           <div className ="row">
             <div className = "col-6">
-           <input type ="search" placeholder="Search for a city..." className ="ms-4"/>
+           <input type ="search" placeholder="Search for a city..." className ="ms-4" 
+           onChange={changeCityName}/>
             </div>
         
             <div className ="col-6">
                 <input type ="submit"
                 value ="Search" className ="btn btn-primary w-50" 
-                onChange={changeCityName}/>
+                />
             </div>
           </div>
           </form>
@@ -66,8 +68,7 @@ if (loaded){
           </div>
           <img src= {values.weatherIcon} className="image" alt={values.description} />
           <div className="position">
-            <strong className ="degree">  {Math.round (values.temperature)} </strong>
-          <span className="temperature">°C | °F </span> {""}
+          <TemperatureUnits celsius = {values.temperature} />
             <span className ="description text-capitalize">
             {values.description}
             </span>

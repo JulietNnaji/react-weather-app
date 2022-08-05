@@ -1,0 +1,9 @@
+.temperature a{
+    color: rgb(17, 15, 15);
+    cursor: pointer;
+    text-decoration: none; 
+}
+.temperature a:hover{
+    color: rgb(99, 91, 91);
+    text-decoration: none;   
+}
