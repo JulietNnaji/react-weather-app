@@ -1,9 +1,15 @@
+:root{
+   --background:  linear-gradient(to right, #eecda3, #ef629f); 
+  
+}
+
+
 ul{
     list-style-type: none;
 }
 .Wrapper,.Weather {
     text-align: center;
-    background-color: #7c92bd;
+    background:var(--background);
     max-width: 600px;
     margin: 20px auto;
   }
@@ -38,3 +44,6 @@ ul{
   text-align: center;
  }
  
+ footer{
+   margin-top: 20px;
+ }

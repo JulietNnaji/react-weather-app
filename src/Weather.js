@@ -5,6 +5,7 @@ import axios from "axios";
 import { Audio } from  'react-loader-spinner';
 import CurrentDate from "./CurrentDate";
 import TemperatureUnits from "./TemperatureUnits";
+import DailyForecast from "./DailyForecast";
 
 export default function Weather (props){
   let [loaded, setLoader] = useState (false);
@@ -14,6 +15,7 @@ export default function Weather (props){
   function showTemperature(response){
   
 setValues({
+  coordinates: response.data.coord,
  temperature: response.data.main.temp,
  humidity: response.data.main.humidity,
  city: response.data.name,
@@ -88,12 +90,16 @@ if (loaded){
             </li>
           </ul>
           </div>
+          <div className ="forecastStyle">
+          <DailyForecast image = {values.weatherIcon} coordinates={values.coordinates}/>
+          </div>
          <footer className="owner">
               <a href="https://github.com/JulietNnaji/react-weather-app" target="blank">
                 Open-source code </a
               >
               by Juliet Nnaji
             </footer>
+         
         </div>
       );
     
