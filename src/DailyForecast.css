@@ -2,13 +2,24 @@
     width: 40px;
 }
 
-.DailyForecast-temperature-min{
-    opacity: 0.5;
-    margin-left: 5px;
+.DailyForecast-day{
+   margin-top: 10px;
 }
+
 .forecastStyle{
     border: 1px solid #eecda3; 
     border-radius: 20px;
     max-width: 500px;
-   margin-left: 50px;
+   margin: 0 auto;
+   padding-left: 10px;
+  text-align: center;
+}
+
+.DailyForecast-temperature {
+    margin-bottom: 10px;
+}
+
+.DailyForecast-temperature-min{
+    opacity: 0.5;
+    margin-left: 5px;
 }

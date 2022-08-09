@@ -8,13 +8,13 @@ import TemperatureUnits from "./TemperatureUnits";
 import DailyForecast from "./DailyForecast";
 
 export default function Weather (props){
-  let [loaded, setLoader] = useState (false);
-  let [values, setValues] =useState(null);
+  let [values, setValues] =useState({ loaded: false});
   let [citySearch, setCityName] = useState (props.cityName);
   
   function showTemperature(response){
   
 setValues({
+  loaded: true,
   coordinates: response.data.coord,
  temperature: response.data.main.temp,
  humidity: response.data.main.humidity,
@@ -27,7 +27,6 @@ setValues({
   response.data.weather[0].icon
 }@2x.png`
 });
-setLoader (true);
   }
   
 function search (){
@@ -45,15 +44,16 @@ function changeCityName (event){
 setCityName (event.target.value);
 }
 
-if (loaded){
+if (values.loaded){
   return (
         <div className="Weather">
         <div className ="Wrapper">
+          <div className = "Border">
                 <div className ="formName">
                   <form onSubmit={submitForm}>
           <div className ="row">
             <div className = "col-6">
-           <input type ="search" placeholder="Search for a city..." className ="ms-4" 
+           <input type ="search" placeholder="Search for a city..." className ="form w-100" 
            onChange={changeCityName}/>
             </div>
         
@@ -89,23 +89,24 @@ if (loaded){
            Pressure: {values.pressure}hPa
             </li>
           </ul>
-          </div>
           <div className ="forecastStyle">
-          <DailyForecast image = {values.weatherIcon} coordinates={values.coordinates}/>
+          <DailyForecast coordinates={values.coordinates}/>
           </div>
+          </div>
+         
          <footer className="owner">
               <a href="https://github.com/JulietNnaji/react-weather-app" target="blank">
                 Open-source code </a
               >
               by Juliet Nnaji
             </footer>
-         
+            </div>
         </div>
       );
     
 }else{
   search();
-    return (<p> 
+    return (<div> 
     <Audio
         height = "80"
         width = "1000"
@@ -114,6 +115,6 @@ if (loaded){
         ariaLabel = 'three-dots-loading'     
         wrapperStyle
         wrapperClass
-      /></p> );
+      /></div> );
 }  
   }

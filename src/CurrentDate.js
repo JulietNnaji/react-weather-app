@@ -40,6 +40,10 @@ export default function CurrentDate(props){
   let minutes = props.date.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
+  } 
+
+  if (minutes > 10){
+    minutes = `${minutes}`;
   }
 
   return (<span>
